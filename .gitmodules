@@ -1,0 +1,9 @@
+[submodule "docker-notebook"]
+	path = docker-notebook
+	url = git@github.com:nicerobot/docker-notebook.git
+[submodule "docker-datastaxenterprise"]
+	path = docker-datastaxenterprise
+	url = git@github.com:nicerobot/docker-datastaxenterprise.git
+[submodule "docker-spark"]
+	path = docker-spark
+	url = git@github.com:nicerobot/docker-spark.git
