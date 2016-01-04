@@ -1,6 +1,6 @@
 # Usage
 
-		#!/bin/bash
+    #!/bin/bash
     read -s password && make USER='username' PASS="${password}"
 
 where:
