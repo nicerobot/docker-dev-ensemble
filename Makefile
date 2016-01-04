@@ -1,13 +1,13 @@
-DIRS = $(wildcard docker-*)
+DIRS = $(patsubst %/,%,$(sort $(dir $(wildcard docker-*/*))))
 
 .PHONY: build $(DIRS) update true-update yes-update 1-update false-update no-update 0-update
 
 UPDATE ?= yes
 
 build:
-	@$(MAKE) $(UPDATE)-update
-	@$(MAKE) $(DIRS)
-	@docker-compose up -d
+	@echo $(MAKE) $(UPDATE)-update
+	@echo $(MAKE) $(DIRS)
+	@echo docker-compose up -d
 
 yes-update 1-update true-update update:
 	@git submodule deinit --force .;  true
@@ -19,5 +19,3 @@ no-update 0-update false-update:
 
 $(DIRS):
 	@cd $@; $(MAKE)
-
-docker-compose.yml:
