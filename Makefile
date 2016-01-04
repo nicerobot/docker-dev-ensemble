@@ -13,7 +13,7 @@ yes-update 1-update true-update update:
 	@git submodule deinit --force .;  true
 	@git submodule update --init --recursive
 	@git submodule foreach --recursive 'git stash; git checkout master; git checkout 2.6.0; git pull; true'
-	@git submodule foreach --recursive 'git branh; git status'
+	@git submodule foreach --recursive 'git branch; git status'
 
 no-update 0-update false-update:
 
