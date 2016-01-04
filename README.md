@@ -1,6 +1,6 @@
 # Usage
 
-    read -s password; make USER=username PASS=$${password}
+    read -s password; make USER=username PASS=${password}
 
 where:
 
