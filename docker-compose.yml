@@ -1,31 +1,31 @@
 cassandra:
-	image: nicerobot/datastaxenterprise:latest
-	links:
-		- spark
-	ports:
-		- "7199:7199"
-		- "7000:7000"
-		- "7001:7001"
-		- "9160:9160"
-		- "9042:9042"
-		- "8012:8012"
-		- "61621:61621"
-		- "8983:8983"
-	volumes:
-		- /var/lib/cassandra
-	environment:
-		- APP_VERSION=1.0
+  image: nicerobot/datastaxenterprise:latest
+  links:
+    - spark
+  ports:
+    - "7199:7199"
+    - "7000:7000"
+    - "7001:7001"
+    - "9160:9160"
+    - "9042:9042"
+    - "8012:8012"
+    - "61621:61621"
+    - "8983:8983"
+  volumes:
+    - /var/lib/cassandra
+  environment:
+    - APP_VERSION=1.0
 
 spark:
-	image: nicerobot/spark:latest
-	environment:
-		- APP_VERSION=1.0
+  image: nicerobot/spark:latest
+  environment:
+    - APP_VERSION=1.0
 
 notebook:
  image: nicerobot/notebook:latest
-	links:
-		- spark
-	volumes:
-		- /data
-	environment:
-		- APP_VERSION=1.0
+  links:
+    - spark
+  volumes:
+    - /data
+  environment:
+    - APP_VERSION=1.0
