@@ -11,6 +11,8 @@ cassandra:
 		- "8012:8012"
 		- "61621:61621"
 		- "8983:8983"
+	volumes:
+		- /var/lib/cassandra
 	environment:
 		- APP_VERSION=1.0
 
@@ -23,5 +25,7 @@ notebook:
  image: nicerobot/notebook:latest
 	links:
 		- spark
+	volumes:
+		- /data
 	environment:
 		- APP_VERSION=1.0
