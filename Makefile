@@ -1,15 +1,21 @@
 DIRS = $(wildcard docker-*)
 
-.PHONY: build $(DIRS) update
+.PHONY: build $(DIRS) update true-update yes-update 1-update false-update no-update 0-update
+
+UPDATE ?= yes
 
 build:
-	@$(MAKE) update
+	@$(MAKE) $(UPDATE)-update
 	@$(MAKE) $(DIRS)
 	@docker-compose up -d
 
-update:
+yes-update 1-update true-update update:
 	@git submodule deinit --force .;  true
 	@git submodule update --init --recursive
+	@git submodule foreach --recursive 'git stash; git checkout master; git checkout 2.6.0; git pull; true'
+	@git submodule foreach --recursive 'git branh; git status'
+
+no-update 0-update false-update:
 
 $(DIRS):
 	@cd $@; $(MAKE)
