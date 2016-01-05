@@ -5,9 +5,9 @@ DIRS = $(patsubst %/,%,$(sort $(dir $(wildcard docker-*/*))))
 UPDATE ?= yes
 
 build:
-	@echo $(MAKE) $(UPDATE)-update
-	@echo $(MAKE) $(DIRS)
-	@echo docker-compose up -d
+	@$(MAKE) $(UPDATE)-update
+	@$(MAKE) $(DIRS)
+	@docker-compose up -d
 
 yes-update 1-update true-update update:
 	@git submodule deinit --force .;  true
