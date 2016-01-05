@@ -1,13 +1,13 @@
 DIRS = $(patsubst %/,%,$(sort $(dir $(wildcard docker-*/*))))
 
-.PHONY: build $(DIRS) update true-update yes-update 1-update false-update no-update 0-update
+.PHONY: build $(DIRS) update true-update yes-update 1-update false-update no-update 0-update up
 
 UPDATE ?= yes
 
 build:
 	@$(MAKE) $(UPDATE)-update
 	@$(MAKE) $(DIRS)
-	@docker-compose up -d
+	@$(MAKE) up
 
 yes-update 1-update true-update update:
 	@mv docker-datastaxenterprise/*.run .; true
@@ -21,3 +21,6 @@ no-update 0-update false-update:
 
 $(DIRS):
 	@cd $@; $(MAKE)
+
+up:
+	@docker-compose up -d
