@@ -33,8 +33,8 @@ notebook:
     - spark
   ports:
     - "8888:8888"
-  volumes:
-    - /notebooks
+  volumes_from:
+    - notebooks
   environment:
     - APP_VERSION=1.0
   command: "notebook --no-browser"
