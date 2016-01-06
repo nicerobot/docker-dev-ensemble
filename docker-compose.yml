@@ -9,9 +9,8 @@ cassandra:
     - "8012:8012"
     - "61621:61621"
     - "8983:8983"
-  volumes:
-    - /var/lib/cassandra
-    - /data
+  volumes_from:
+    - cassandra
   environment:
     - APP_VERSION=1.0
 
@@ -35,7 +34,7 @@ notebook:
   ports:
     - "8888:8888"
   volumes_from:
-    - /notebooks
+    - notebooks
   environment:
     - APP_VERSION=1.0
   command: "notebook --no-browser"
