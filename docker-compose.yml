@@ -1,7 +1,5 @@
 cassandra:
   image: "nicerobot/datastaxenterprise:latest"
-  links:
-    - spark
   ports:
     - "7199:7199"
     - "7000:7000"
@@ -13,11 +11,14 @@ cassandra:
     - "8983:8983"
   volumes:
     - /var/lib/cassandra
+    - /data
   environment:
     - APP_VERSION=1.0
 
 spark:
   image: "nicerobot/spark:latest"
+  links:
+    - cassandra
   ports:
     - "8081:8081"
     - "8080:8080"
@@ -34,7 +35,7 @@ notebook:
   ports:
     - "8888:8888"
   volumes_from:
-    - notebooks
+    - /notebooks
   environment:
     - APP_VERSION=1.0
   command: "notebook --no-browser"
