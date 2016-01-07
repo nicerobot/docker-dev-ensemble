@@ -7,6 +7,7 @@ UPDATE ?= yes
 build:
 	@$(MAKE) $(UPDATE)-update
 	@$(MAKE) $(DIRS)
+	@$(MAKE) volumes
 	@$(MAKE) up
 
 yes-update 1-update true-update update:
