@@ -20,7 +20,11 @@ yes-update 1-update true-update update:
 no-update 0-update false-update:
 
 $(DIRS):
-	@cd $@; $(MAKE)
+	@cd $@; $(MAKE) $(TARGETED)
+
+volumes:
+	@$(MAKE) $(DIRS) TARGETED=volumes
+	@docker ps -a | grep Created
 
 up:
 	@docker-compose up -d

@@ -1,4 +1,4 @@
-cassandra:
+datastaxenterprise:
   image: "nicerobot/datastaxenterprise:latest"
   ports:
     - "7199:7199"
@@ -17,7 +17,7 @@ cassandra:
 spark:
   image: "nicerobot/spark:latest"
   links:
-    - cassandra
+    - datastaxenterprise
   ports:
     - "8081:8081"
     - "8080:8080"
